@@ -10,14 +10,24 @@ npx create-nx-workspace@20.0.6 my-nx-playground --workspaceType=integrated --pre
 
 - Add two nextjs projects to this workspace blog & promotions
 
+Go to workspace root directory i.e `my-nx-playground`. Below command adds a new project i.e `blog` to apps folder
+
 ```bash
 #cd my-nx-playground;
-
 # creates application name: blog
 npx nx g @nx/next:app apps/blog --src=true --style=tailwind --appDir=true --e2eTestRunner=none --runtimeTsconfigFileName=tsconfig.json
+```
 
-# creates application name: promotions
+Go to workspace root directory i.e `my-nx-playground`. Below command adds a new project i.e `promotions` to apps folder
+
+```bash
 npx nx g @nx/next:app apps/promotions --src=true --style=tailwind --appDir=true --e2eTestRunner=none --runtimeTsconfigFileName=tsconfig.json
+```
+
+- Add a new js typescript `mylibs` project to be used as utils across multiple projects
+
+```bash
+npx nx g @nx/js:lib libs/mylib
 ```
 
 ## Other cli commands to use in the nx workspace
@@ -31,6 +41,7 @@ npx nx g @nx/next:app apps/promotions --src=true --style=tailwind --appDir=true 
 
 1. cli options in creating nx workspace [link](https://nx.dev/nx-api/nx/documents/create-nx-workspace)
 1. cli options in generating next.js project in an existing workpace [link](https://nx.dev/nx-api/next)
+1. nx plugin registry [link](https://nx.dev/plugin-registry)
 
 ## Nx Brandings
 

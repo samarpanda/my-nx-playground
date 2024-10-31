@@ -1,3 +1,5 @@
+import { mylib } from '@my-nx-playground/mylib';
+
 export default function Index() {
   /*
    * Replace the elements below with your own.
@@ -11,7 +13,7 @@ export default function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome blog 👋
+              Welcome blog 👋 From {mylib()}
             </h1>
           </div>
 
