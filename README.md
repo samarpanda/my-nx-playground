@@ -23,6 +23,14 @@ npx nx g @nx/next:app apps/promotions --src=true --style=tailwind --appDir=true 
 ## Other cli commands to use in the nx workspace
 
 1. List all projects in this workspace `npx nx show projects`
+1. To see all available targets to run for a project `npx nx show project <project_name>` i.e `npx nx show project website`
+1. To run multiple projects in a workspace `npx nx run-many --target=dev --projects=website,blog --parallel`
+1. To run all projects in a workspace `npx nx run-many --target=dev --all --parallel`
+
+## Documents referred
+
+1. cli options in creating nx workspace [link](https://nx.dev/nx-api/nx/documents/create-nx-workspace)
+1. cli options in generating next.js project in an existing workpace [link](https://nx.dev/nx-api/next)
 
 ## Nx Brandings
 
