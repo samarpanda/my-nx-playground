@@ -36,6 +36,10 @@ npx nx g @nx/js:lib libs/mylib
 1. To see all available targets to run for a project `npx nx show project <project_name>` i.e `npx nx show project website`
 1. To run multiple projects in a workspace `npx nx run-many --target=dev --projects=website,blog --parallel`
 1. To run all projects in a workspace `npx nx run-many --target=dev --all --parallel`
+1. Run dev command for a project using local nx `npm run nx dev website`
+1. Run build command for a project using local nx `npm run nx build website`
+1. Docker build image & run container on PORT=4000 i.e `sh apps/website/.scripts/build/local-run.sh` Then the website will be accessible at `http://localhost:4000`
+1. Docker stop container & Remove image i.e `sh apps/website/.scripts/build/local-stop.sh`
 
 ## Documents referred
 

@@ -7,13 +7,21 @@ const { composePlugins, withNx } = require('@nx/next');
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
-  distDir: '../../dist/apps/website/.next',
-  // output: 'standalone',
+  // distDir: '../../dist/apps/website/.next',
+  output: 'standalone',
   nx: {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  // images: {
+  //   remotePatterns: [{ hostname: 'abc.com' }],
+  // },
 };
 
 const plugins = [
