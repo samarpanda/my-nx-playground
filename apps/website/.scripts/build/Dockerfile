@@ -1,8 +1,8 @@
 FROM node:20.18.0-alpine AS base
 
 FROM base AS deps
-RUN apk add --no-cache libc6-compat bash curl
 WORKDIR /app
+RUN apk add --no-cache libc6-compat bash curl
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -14,17 +14,18 @@ RUN \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-ENV NX_DISTRIBUTED_CACHE=false
-ENV NX_DISABLE_DB=true
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
+ENV NX_DISTRIBUTED_CACHE=false \
+  NX_DISABLE_DB=true \
+  NEXT_TELEMETRY_DISABLED=1 \
+  NODE_ENV=production
+
 COPY . .
 RUN npm run nx build website
 
 FROM base AS runner
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
+ENV NODE_ENV=production \
+  NEXT_TELEMETRY_DISABLED=1
 COPY apps/website/.env apps/website/.scripts/build/init.sh ./
 COPY --from=builder /app/apps/website/public ./apps/website/public
 COPY --from=builder /app/apps/website/.next/standalone ./
